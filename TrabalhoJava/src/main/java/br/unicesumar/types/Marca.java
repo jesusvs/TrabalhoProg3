@@ -1,12 +1,13 @@
 package br.unicesumar.types;
 
-public enum Sexo {
-	MASCULINO("Masculino"),
-	FEMININO("Feminino");
-	
+public enum Marca {
+	CHEVROLET("Chevrolet"),
+	FORD("Ford"),
+	WOLSKVAGEM("Wolskvagem"),
+	CITROEN("Citroen");
 	private final String descricao;
 	
-	Sexo(String descricao) {
+	Marca(String descricao) {
 		this.descricao = descricao;
 	}
 

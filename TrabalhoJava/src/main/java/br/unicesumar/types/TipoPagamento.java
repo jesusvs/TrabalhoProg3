@@ -1,12 +1,13 @@
 package br.unicesumar.types;
 
-public enum Sexo {
-	MASCULINO("Masculino"),
-	FEMININO("Feminino");
+public enum TipoPagamento {
+
+	CARTAO("Cartão"),
+	AVISTA("A vista");
 	
 	private final String descricao;
 	
-	Sexo(String descricao) {
+	TipoPagamento(String descricao) {
 		this.descricao = descricao;
 	}
 
