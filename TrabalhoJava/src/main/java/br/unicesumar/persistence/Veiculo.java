@@ -17,8 +17,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 
+import br.unicesumar.types.Marca;
 import br.unicesumar.types.TipoVeiculo;
-import br.unicesumar.utils.Marca;
 
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)

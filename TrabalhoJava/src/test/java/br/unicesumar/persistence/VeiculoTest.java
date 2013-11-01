@@ -1,12 +1,13 @@
 package br.unicesumar.persistence;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import org.junit.Test;
 
+import br.unicesumar.types.Marca;
 import br.unicesumar.types.TipoPagamento;
 import br.unicesumar.types.TipoVeiculo;
-import br.unicesumar.utils.Marca;
 
 public class VeiculoTest {
 	private Carro c = new Carro();
