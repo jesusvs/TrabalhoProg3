@@ -1,7 +1,7 @@
 package br.unicesumar.persistence;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
 
@@ -17,12 +17,12 @@ public class VeiculoTest {
 	public void testVeiculo() {
 		iniciarRecebimento();
 		iniciarVeiculo();
-		assertNotEquals("Opalla", c.getNomeVeiculo());
+		assertFalse("Errado", c.getNomeVeiculo().equals("Opalla"));
 		assertEquals(Marca.CHEVROLET, c.getMarca());
-		assertNotEquals("QWE-9876", c.getPlaca());
+		assertFalse("Errado", c.getPlaca().equals("QWE-9874"));
 		assertEquals(TipoVeiculo.SEDAN, r.getVeiculo().getTipoVeiculo());
-		assertNotEquals(TipoPagamento.AVISTA, c.getRecebimento().get(0)
-				.getTipoPagamento());
+		assertFalse( c.getRecebimento().get(0)
+				.getTipoPagamento()==TipoPagamento.AVISTA);
 	}
 
 	public void iniciarVeiculo() {

@@ -1,7 +1,7 @@
 package br.unicesumar.persistence;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
 
@@ -18,7 +18,7 @@ public class FinanceiroTest {
 		
 		r.setValorRecebido(2);
 		f.setFinancaTotal(r.getValorRecebido()-r.getValorTroco());
-		assertNotEquals(9.0, f.getFinancaTotal(),0);
+		assertFalse("Errado", f.getFinancaTotal()==9.2);
 	}
 	
 	@Test

@@ -1,13 +1,14 @@
 package br.unicesumar.persistence;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
 
 import br.unicesumar.types.Marca;
 import br.unicesumar.types.TipoPagamento;
 import br.unicesumar.types.TipoVeiculo;
+
 
 public class RecebimentoTest {
 	private Recebimento r=new Recebimento();
@@ -26,17 +27,17 @@ public class RecebimentoTest {
 		iniciarRecebimento();
 		assertEquals(54, r.getValorRecebido(),0);
 		assertEquals(10.2, r.getValorTroco(),0);
-		assertNotEquals(2, r.getValorRecebido(),0);
-		assertNotEquals(31, r.getValorTroco(),0);
+		assertFalse("Errado", r.getValorRecebido()==2);
+		assertFalse("Errado", r.getValorTroco()==31);
 		assertEquals(43.8, r.getValorRecebido()-r.getValorTroco(),0);
-		assertNotEquals(291, r.getValorRecebido()-r.getValorTroco(),0);
+		assertFalse( r.getValorRecebido()-r.getValorTroco()==291);
 	}
 
 	@Test
 	public void testRecebimentoEVeiculo(){
 		iniciarRecebimento();
 		iniciarVeiculo();
-		assertNotEquals(Marca.FORD, r.getVeiculo().getMarca());
+		assertFalse("Errado", r.getVeiculo().getMarca()==Marca.FORD);
 		assertEquals("Omega", r.getVeiculo().getNomeVeiculo());
 	}
 	@Test
@@ -44,9 +45,9 @@ public class RecebimentoTest {
 		iniciarVeiculo();
 		assertEquals(Marca.CHEVROLET, c.getMarca());
 		assertEquals(54, c.getRecebimento().get(0).getValorRecebido(),0);
-		assertNotEquals(TipoVeiculo.HATCH,c.getTipoVeiculo());
+		assertFalse("Errado",c.getTipoVeiculo()==TipoVeiculo.HATCH);
 		assertEquals("AAA-1234",c.getRecebimento().get(0).getVeiculo().getPlaca());
-		assertNotEquals(TipoPagamento.CARTAO, c.getRecebimento().get(1).getTipoPagamento());
+		assertFalse(c.getRecebimento().get(1).getTipoPagamento()==TipoPagamento.CARTAO);
 	}
 	
 	public void iniciarVeiculo(){
