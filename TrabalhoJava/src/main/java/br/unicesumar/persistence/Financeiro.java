@@ -20,8 +20,8 @@ public class Financeiro {
 	@Column(nullable = false)
 	private double financaTotal;
 
-	@OneToMany(mappedBy="financeiro;")
-	private List<Recebimento> recebimento=new ArrayList<Recebimento>();;
+	@OneToMany(mappedBy="financeiro")
+	private List<Recebimento> recebimento=new ArrayList<Recebimento>();
 	
 	public List<Recebimento> getRecebimento() {
 		return recebimento;
