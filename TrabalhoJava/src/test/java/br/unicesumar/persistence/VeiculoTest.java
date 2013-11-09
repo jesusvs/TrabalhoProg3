@@ -21,8 +21,6 @@ public class VeiculoTest {
 		assertEquals(Marca.CHEVROLET, c.getMarca());
 		assertFalse("Errado", c.getPlaca().equals("QWE-9874"));
 		assertEquals(TipoVeiculo.SEDAN, r.getVeiculo().getTipoVeiculo());
-		assertFalse( c.getRecebimento().get(0)
-				.getTipoPagamento()==TipoPagamento.AVISTA);
 	}
 
 	public void iniciarVeiculo() {
@@ -30,7 +28,6 @@ public class VeiculoTest {
 		this.c.setNomeVeiculo("Omega");
 		this.c.setPlaca("AAA-1234");
 		iniciarRecebimento();
-		this.c.setRecebimento(this.r);
 		this.c.setTipoVeiculo(TipoVeiculo.SEDAN);
 	}
 

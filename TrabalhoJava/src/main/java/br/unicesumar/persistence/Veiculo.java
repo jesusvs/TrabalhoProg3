@@ -1,8 +1,5 @@
 package br.unicesumar.persistence;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -15,7 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
 
 import br.unicesumar.types.Marca;
 import br.unicesumar.types.TipoVeiculo;
@@ -44,18 +40,6 @@ public class Veiculo {
 	
 	@Column(nullable=false)
 	private String nomeVeiculo;
-	
-
-	@OneToMany(mappedBy="recebimento;")
-	private List<Recebimento> recebimento=new ArrayList<Recebimento>();;
-
-	public List<Recebimento> getRecebimento() {
-		return recebimento;
-	}
-
-	public void setRecebimento(Recebimento recebimento) {
-		this.recebimento.add(recebimento);
-	}
 
 	public TipoVeiculo getTipoVeiculo() {
 		return tipoVeiculo;

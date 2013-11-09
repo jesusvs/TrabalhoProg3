@@ -1,5 +1,8 @@
 package br.unicesumar.persistence;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -8,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import br.unicesumar.types.TipoPagamento;
 
@@ -41,6 +45,16 @@ public class Recebimento {
 	@Enumerated(EnumType.STRING)
 	private TipoPagamento tipoPagamento;
 	
+	@OneToMany(mappedBy="corrida;")
+	private List<Recebimento> recebimento=new ArrayList<Recebimento>();;
+
+	public List<Recebimento> getRecebimento() {
+		return recebimento;
+	}
+
+	public void setRecebimento(Recebimento recebimento) {
+		this.recebimento.add(recebimento);
+	}
 	
 	public Financeiro getFinanceiro() {
 		return financeiro;

@@ -44,10 +44,7 @@ public class RecebimentoTest {
 	public void testVeiculo(){
 		iniciarVeiculo();
 		assertEquals(Marca.CHEVROLET, c.getMarca());
-		assertEquals(54, c.getRecebimento().get(0).getValorRecebido(),0);
 		assertFalse("Errado",c.getTipoVeiculo()==TipoVeiculo.HATCH);
-		assertEquals("AAA-1234",c.getRecebimento().get(0).getVeiculo().getPlaca());
-		assertFalse(c.getRecebimento().get(1).getTipoPagamento()==TipoPagamento.CARTAO);
 	}
 	
 	public void iniciarVeiculo(){
@@ -55,8 +52,6 @@ public class RecebimentoTest {
 		this.c.setNomeVeiculo("Omega");
 		this.c.setPlaca("AAA-1234");
 		iniciarRecebimento();
-		this.c.setRecebimento(this.r);
-		this.c.setRecebimento(r2);
 		this.c.setTipoVeiculo(TipoVeiculo.SEDAN);
 	}
 	public void iniciarRecebimento(){
