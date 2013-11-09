@@ -22,10 +22,11 @@
 		<property name="show_sql">true</property>
 		<property name="format_sql">true</property>
 	
-		<mapping class="br.unicesumar.persistence.Concessionaria"/>
-		<mapping class="br.unicesumar.persistence.Veiculo"/>
 		<mapping class="br.unicesumar.persistence.Carro"/>
-		<mapping class="br.unicesumar.persistence.Moto"/>
-		<mapping class="br.unicesumar.persistence.Usuario"/>
+		<mapping class="br.unicesumar.persistence.Veiculo"/>
+		<mapping class="br.unicesumar.persistence.Corrida"/>
+		<mapping class="br.unicesumar.persistence.Financeiro"/>
+		<mapping class="br.unicesumar.persistence.Pessoa"/>
+		<mapping class="br.unicesumar.persistence.Recebimento"/>
 	</session-factory>
 </hibernate-configuration>
