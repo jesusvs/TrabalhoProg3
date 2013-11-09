@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Cadastro de Pessoa</title>
+</h:head>
+<h:body>
+	<h1>Cadastro de Pessoa</h1>
+	<h:form>
+		<p:messages id="messages"  autoUpdate="true"
+			closable="true" />
+		<h:panelGrid columns="2">
+			<p:outputLabel value="Nome:" for="nomeConcessionaria" />
+			<p:inputText id="nomeConcessionaria"
+				value="#{concessionariaBean.concessionaria.nome}" required="true" />
+
+			<p:outputLabel value="Endereco:" for="enderecoConcessionaria" />
+			<p:inputText id="enderecoConcessionaria"
+				value="#{concessionariaBean.concessionaria.endereco}"
+				required="true" />
+
+			<p:outputLabel value="Numero:" for="numeroConcessionaria" />
+			<p:inputText id="numeroConcessionaria"
+				value="#{concessionariaBean.concessionaria.numero}" required="true" />
+
+			<p:outputLabel value="Complemento:" for="complementoConcessionaria" />
+			<p:inputText id="complementoConcessionaria"
+				value="#{concessionariaBean.concessionaria.complemento}" />
+
+			<p:outputLabel value="Cep" for="cepConcessionaria" />
+			<p:inputText id="cepConcessionaria"
+				value="#{concessionariaBean.concessionaria.cep}" />
+
+			<p:outputLabel value="Telefone:" for="telefoneConcessionaria" />
+			<p:inputText id="telefoneConcessionaria"
+				value="#{concessionariaBean.concessionaria.telefone}" />
+
+			<p:outputLabel value="Cidade:" for="cidadeConcessionaria" />
+			<p:inputText id="cidadeConcessionaria"
+				value="#{concessionariaBean.concessionaria.cidade}" required="true" />
+
+			<p:outputLabel value="Estados:" for="estados" />
+			<p:selectOneMenu id="estados"
+				value="#{concessionariaBean.concessionaria.uf}">
+				<f:selectItems value="#{concessionariaBean.ufValues}" var="uf"
+					itemValue="#{uf}" itemLabel="#{uf.descricao}" />
+			</p:selectOneMenu>
+
+			<p:commandButton value="Inserir"
+				rendered="#{concessionariaBean.concessionaria.id == null}"
+				action="#{concessionariaBean.salvar}" />
+
+			<p:commandButton value="Alterar"
+				rendered="#{concessionariaBean.concessionaria.id != null}"
+				action="#{concessionariaBean.salvar}" />
+
+			<p:commandButton value="Voltar" action="concessionariaList" immediate="true"/>
+		</h:panelGrid>
+	</h:form>
+
+</h:body>
+</html>
