@@ -16,7 +16,7 @@ public class PessoaBean {
 	private Pessoa pessoa = new Pessoa();
 	private PessoaDao dao = new PessoaDao();
 	private String nome = "";
-	private List<Pessoa> listagemDePessoa = new ArrayList<Pessoa>();
+	private List<Pessoa> listagemPessoa = new ArrayList<Pessoa>();
 
 	public String getNome() {
 		return nome;
@@ -43,11 +43,11 @@ public class PessoaBean {
 	}
 
 	public List<Pessoa> getListagemPessoa() {
-		return listagemDePessoa;
+		return listagemPessoa;
 	}
 
-	public void setListagemPessoa(List<Pessoa> listagemDePessoa) {
-		this.listagemDePessoa = listagemDePessoa;
+	public void setListagemPessoa(List<Pessoa> listagemPessoa) {
+		this.listagemPessoa = listagemPessoa;
 	}
 	
 	public String salvar() {
@@ -77,7 +77,7 @@ public class PessoaBean {
 	}
 	
 	public void pesquisarPessoa() {
-		listagemDePessoa = dao.pesquisarPessoaPorNome(nome);
+		listagemPessoa = dao.pesquisarPessoaPorNome(nome);
 	}
 	
 	public String novaPessoa() {
@@ -121,6 +121,6 @@ public class PessoaBean {
 	}
 	
 	public Integer getQuantidadeItensLista() {
-		return listagemDePessoa.size();
+		return listagemPessoa.size();
 	}
 }
