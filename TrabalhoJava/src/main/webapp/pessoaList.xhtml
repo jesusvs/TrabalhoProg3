@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Cadastro de Pessoa</title>
+</h:head>
+<h:body>
+	<h1>Lista de Pessoa</h1>
+	<h:form>
+		<p:messages id="messages" showDetail="true" autoUpdate="true"
+			closable="true" />
+		<p:fieldset legend="Filtrar por">
+			<p:outputLabel value="Nome:" />
+			<p:inputText id="nome" value="#{pessoaBean.nome}" />
+			<p:commandButton value="Pesquisar"
+				actionListener="#{pessoaBean.pesquisarPessoaPorNome}"
+				update="dataTable" />
+		</p:fieldset>
+		<p:dataTable id="dataTable" var="result"
+			value="#{pessoaBean.listagemPessoa}">
+			<p:column headerText="Nome">
+				<h:outputText value="#{result.nome}" />
+			</p:column>
+			<p:column headerText="Idade">
+				<h:outputText value="#{result.idade}" />
+			</p:column>
+			<p:column headerText="Sexo">
+				<h:outputText value="#{result.sexo}" />
+			</p:column>
+			<p:column headerText="Cpf">
+				<h:outputText value="#{result.cpf}" />
+			</p:column>
+			<p:column>
+				<p:commandButton id="btEdit" icon="ui-icon-pencil"
+					action="#{pessoaBean.editar(result)}">
+				</p:commandButton>
+
+				<p:commandButton id="btDelete" icon="ui-icon-trash"
+					onclick="confirmarRemocao.show();"
+					actionListener="#{pessoaBean.guardarSelecao(result)}">
+				</p:commandButton>
+
+			</p:column>
+		</p:dataTable>
+		<p:dialog header="Confirmar" widgetVar="confirmarRemocao"
+			id="confirmacao" showEffect="explode" hideEffect="clip" height="100"
+			closeOnEscape="true">
+			<h:outputText value="Deseja realmente excluir?" />
+			<p:commandButton value="Sim" icon="ui-icon-check"
+				action="#{pessoaBean.remover}"
+				onclick="confirmarRemocao.hide()">
+			</p:commandButton>
+			<p:commandButton value="Não" icon="ui-icon-close"
+				onclick="confirmarRemocao.hide()" />
+		</p:dialog>
+
+		<p:commandButton value="Cadastrar Pessoa"
+			action="#{pessoaBean.novaPessoa}" />
+	</h:form>
+</h:body>
+</html>
