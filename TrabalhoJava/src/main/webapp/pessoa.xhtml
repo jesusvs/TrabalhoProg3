@@ -11,54 +11,35 @@
 <h:body>
 	<h1>Cadastro de Pessoa</h1>
 	<h:form>
-		<p:messages id="messages"  autoUpdate="true"
-			closable="true" />
+		<p:messages id="messages" autoUpdate="true" closable="true" />
 		<h:panelGrid columns="2">
-			<p:outputLabel value="Nome:" for="nomeConcessionaria" />
-			<p:inputText id="nomeConcessionaria"
-				value="#{concessionariaBean.concessionaria.nome}" required="true" />
-
-			<p:outputLabel value="Endereco:" for="enderecoConcessionaria" />
-			<p:inputText id="enderecoConcessionaria"
-				value="#{concessionariaBean.concessionaria.endereco}"
+			<p:outputLabel value="Nome:" for="nomePessoa" />
+			<p:inputText id="nomePessoa" value="#{pessoaBean.pessoa.nome}"
 				required="true" />
 
-			<p:outputLabel value="Numero:" for="numeroConcessionaria" />
-			<p:inputText id="numeroConcessionaria"
-				value="#{concessionariaBean.concessionaria.numero}" required="true" />
+			<p:outputLabel value="Idade:" for="idadePessoa" />
+			<p:inputText id="idadePessoa" value="#{pessoaBean.pessoa.idade}"
+				required="true" />
 
-			<p:outputLabel value="Complemento:" for="complementoConcessionaria" />
-			<p:inputText id="complementoConcessionaria"
-				value="#{concessionariaBean.concessionaria.complemento}" />
-
-			<p:outputLabel value="Cep" for="cepConcessionaria" />
-			<p:inputText id="cepConcessionaria"
-				value="#{concessionariaBean.concessionaria.cep}" />
-
-			<p:outputLabel value="Telefone:" for="telefoneConcessionaria" />
-			<p:inputText id="telefoneConcessionaria"
-				value="#{concessionariaBean.concessionaria.telefone}" />
-
-			<p:outputLabel value="Cidade:" for="cidadeConcessionaria" />
-			<p:inputText id="cidadeConcessionaria"
-				value="#{concessionariaBean.concessionaria.cidade}" required="true" />
-
-			<p:outputLabel value="Estados:" for="estados" />
-			<p:selectOneMenu id="estados"
-				value="#{concessionariaBean.concessionaria.uf}">
-				<f:selectItems value="#{concessionariaBean.ufValues}" var="uf"
-					itemValue="#{uf}" itemLabel="#{uf.descricao}" />
+			<p:outputLabel value="Sexo:" for="sexo" />
+			<p:selectOneMenu id="sexo" value="#{PessoaBean.Pessoa.sexo}">
+				<f:selectItems value="#{pessoaBean.sexoValues}" var="sexo"
+					itemValue="#{sexo}" itemLabel="#{sexo.descricao}" />
 			</p:selectOneMenu>
 
+			<p:outputLabel value="Cpf:" for="cpfPessoa" />
+			<p:inputText id="cpfPessoa" value="#{pessoaBean.pessoa.cpf}"
+				required="true" />
+
 			<p:commandButton value="Inserir"
-				rendered="#{concessionariaBean.concessionaria.id == null}"
-				action="#{concessionariaBean.salvar}" />
+				rendered="#{pessoaBean.pessoa.id == null}"
+				action="#{pessoaBean.salvar}" />
 
 			<p:commandButton value="Alterar"
-				rendered="#{concessionariaBean.concessionaria.id != null}"
-				action="#{concessionariaBean.salvar}" />
+				rendered="#{pessoaBean.pessoa.id != null}"
+				action="#{pessoaBean.salvar}" />
 
-			<p:commandButton value="Voltar" action="concessionariaList" immediate="true"/>
+			<p:commandButton value="Voltar" action="pessoaList" immediate="true" />
 		</h:panelGrid>
 	</h:form>
 
