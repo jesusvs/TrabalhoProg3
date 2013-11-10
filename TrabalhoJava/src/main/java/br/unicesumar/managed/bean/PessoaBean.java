@@ -5,15 +5,15 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import br.unicesumar.dao.impl.PessoaDao;
 import br.unicesumar.persistence.Pessoa;
 import br.unicesumar.types.Sexo;
 
+
+
 @ManagedBean
-@SessionScoped
 public class PessoaBean {
 	private Pessoa pessoa = new Pessoa();
 	private PessoaDao dao = new PessoaDao();
