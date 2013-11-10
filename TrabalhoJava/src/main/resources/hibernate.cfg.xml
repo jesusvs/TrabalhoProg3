@@ -28,5 +28,9 @@
 		<mapping class="br.unicesumar.persistence.Financeiro"/>
 		<mapping class="br.unicesumar.persistence.Pessoa"/>
 		<mapping class="br.unicesumar.persistence.Recebimento"/>
+		<mapping class="br.unicesumar.types.Sexo"/>
+		<mapping class="br.unicesumar.types.Marca"/>
+		<mapping class="br.unicesumar.types.TipoPagamento"/>
+		<mapping class="br.unicesumar.types.TipoVeiculo"/>
 	</session-factory>
 </hibernate-configuration>

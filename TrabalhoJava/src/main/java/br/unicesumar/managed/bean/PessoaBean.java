@@ -11,8 +11,6 @@ import br.unicesumar.dao.impl.PessoaDao;
 import br.unicesumar.persistence.Pessoa;
 import br.unicesumar.types.Sexo;
 
-
-
 @ManagedBean
 public class PessoaBean {
 	private Pessoa pessoa = new Pessoa();
