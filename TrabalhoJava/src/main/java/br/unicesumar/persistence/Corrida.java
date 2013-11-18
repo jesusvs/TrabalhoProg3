@@ -1,5 +1,6 @@
 package br.unicesumar.persistence;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -9,7 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Corrida {
@@ -25,17 +26,22 @@ public class Corrida {
 	private String destinoCorrida;
 	
 	@Column(nullable = false)
-	private double distanciaPercorrida;
+	private BigDecimal valorTotal;
 	
-	@Column(nullable = false)
-	private int qtdCorridasDia;
-	
-	@Column(nullable = false)
-	private Date dataDaCorrida;
-	
-	@OneToMany(mappedBy="recebimento;")
-	private List<Recebimento> corrida=new ArrayList<Recebimento>();
+	public BigDecimal getValorTotal() {
+		return valorTotal;
+	}
 
+	public void setValorTotal(BigDecimal valorTotal) {
+		this.valorTotal = valorTotal;
+	}
+
+	@OneToOne
+	private List<Veiculo> veiculo=new ArrayList<Veiculo>();
+
+	@OneToOne
+	private List<Motorista> motorista=new ArrayList<Motorista>();
+	
 	public String getOrigemCorrida() {
 		return origemCorrida;
 	}
@@ -52,36 +58,20 @@ public class Corrida {
 		this.destinoCorrida = destinoCorrida;
 	}
 
-	public double getDistanciaPercorrida() {
-		return distanciaPercorrida;
+	public List<Veiculo> getVeiculo() {
+		return veiculo;
 	}
 
-	public void setDistanciaPercorrida(double distanciaPercorrida) {
-		this.distanciaPercorrida = distanciaPercorrida;
+	public void setVeiculo(Veiculo veiculo) {
+		this.veiculo.add(veiculo);
 	}
 
-	public int getQtdCorridasDia() {
-		return qtdCorridasDia;
+	public List<Motorista> getMotorista() {
+		return motorista;
 	}
 
-	public void setQtdCorridasDia(int qtdCorridasDia) {
-		this.qtdCorridasDia = qtdCorridasDia;
-	}
-
-	public Date getDataDaCorrida() {
-		return dataDaCorrida;
-	}
-
-	public void setDataDaCorrida(Date dataDaCorrida) {
-		this.dataDaCorrida = dataDaCorrida;
-	}
-
-	public List<Recebimento> getCorrida() {
-		return corrida;
-	}
-
-	public void setCorrida(Recebimento corrida) {
-		this.corrida.add(corrida);
+	public void setMotorista(Motorista motorista) {
+		this.motorista.add(motorista);
 	}
 
 	public Long getId() {

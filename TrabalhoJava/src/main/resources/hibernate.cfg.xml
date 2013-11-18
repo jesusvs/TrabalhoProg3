@@ -22,11 +22,8 @@
 		<property name="show_sql">true</property>
 		<property name="format_sql">true</property>
 	
-		<mapping class="br.unicesumar.persistence.Carro"/>
 		<mapping class="br.unicesumar.persistence.Veiculo"/>
 		<mapping class="br.unicesumar.persistence.Corrida"/>
-		<mapping class="br.unicesumar.persistence.Financeiro"/>
-		<mapping class="br.unicesumar.persistence.Pessoa"/>
-		<mapping class="br.unicesumar.persistence.Recebimento"/>
+		<mapping class="br.unicesumar.persistence.Motorista"/>
 	</session-factory>
 </hibernate-configuration>

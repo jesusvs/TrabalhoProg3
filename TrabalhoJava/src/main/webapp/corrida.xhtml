@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Cadastro de Corrida</title>
+</h:head>
+<h:body>
+	<h1>Cadastro de Corrida</h1>
+	<h:form>
+		<p:messages id="messages" autoUpdate="true" closable="true" />
+		<h:panelGrid columns="2">
+			<p:outputLabel value="Origem corrida:" for="origemCorrida" />
+			<p:inputText id="origemCorrida"
+				value="#{CorridaBean.corrida.origemCorrida}" required="true" />
+
+			<p:outputLabel value="Destino corrida:" for="destinoCorrida" />
+			<p:inputText id="destinoCorrida"
+				value="#{CorridaBean.corrida.destinoCorrida}" required="true" />
+
+			<p:outputLabel value="Valor total:" for="valorTotal" />
+			<p:inputText id="valorTotal"
+				value="#{CorridaBean.corrida.valorTotal}" required="true" />
+
+			<p:outputLabel value="Veiculo:" for="veiculo" />
+			<p:selectOneMenu id="veiculo" value="#{CorridaBean.Corrida.veiculo}">
+				<f:selectItems value="#{corridaBean.veiculoValues}" var="veiculo"
+					itemValue="#{veiculo}" itemLabel="#{veiculo.descricao}" />
+			</p:selectOneMenu>
+
+			<p:outputLabel value="Motorista:" for="motorista" />
+			<p:selectOneMenu id="motorista" value="#{CorridaBean.Corrida.motorista}">
+				<f:selectItems value="#{corridaBean.motoristaValues}" var="motorista"
+					itemValue="#{motorista}" itemLabel="#{motorista.descricao}" />
+			</p:selectOneMenu>
+
+			<p:commandButton value="Inserir"
+				rendered="#{corridaBean.corrida.id == null}"
+				action="#{corridaBean.salvar}" />
+
+			<p:commandButton value="Alterar"
+				rendered="#{corridaBean.corrida.id != null}"
+				action="#{corridaBean.salvar}" />
+
+			<p:commandButton value="Voltar" action="corridaList" immediate="true" />
+		</h:panelGrid>
+	</h:form>
+
+</h:body>
+</html>

@@ -7,12 +7,13 @@ import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
 import br.unicesumar.dao.GenericHibernateDao;
-import br.unicesumar.persistence.Pessoa;
+import br.unicesumar.persistence.Corrida;
+import br.unicesumar.persistence.Motorista;
 
-public class PessoaDao extends GenericHibernateDao<Pessoa, Long>{
+public class CorridaDao extends GenericHibernateDao<Corrida, Long>{
 
-	public List<Pessoa> pesquisarPessoaPorNome(String nome) {
-		Criteria criteria = getSession().createCriteria(Pessoa.class);
+	public List<Corrida> pesquisarCorrida(String nome) {
+		Criteria criteria = getSession().createCriteria(Corrida.class);
 		if (nome != "") {
 		    criteria.add(Restrictions.like("nome", nome, MatchMode.ANYWHERE));
 		}

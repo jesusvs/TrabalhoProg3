@@ -6,11 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import br.unicesumar.types.Sexo;
-
 
 @Entity
-public class Pessoa {
+public class Motorista {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -20,9 +18,6 @@ public class Pessoa {
 	
 	@Column(nullable = false)
 	private int idade;
-
-	@Column(nullable = false)
-	private Sexo sexo;
 	
 	@Column(nullable = false)
 	private String cpf;
@@ -41,14 +36,6 @@ public class Pessoa {
 
 	public void setIdade(int idade) {
 		this.idade = idade;
-	}
-
-	public Sexo getSexo() {
-		return sexo;
-	}
-
-	public void setSexo(Sexo sexo) {
-		this.sexo = sexo;
 	}
 
 	public String getCpf() {
