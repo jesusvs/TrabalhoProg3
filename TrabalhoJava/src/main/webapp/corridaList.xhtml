@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Cadastro de Corrida</title>
+</h:head>
+<h:body>
+	<h1>Lista de Corrida</h1>
+	<h:form>
+		<p:messages id="messages" showDetail="true" autoUpdate="true"
+			closable="true" />
+		<p:fieldset legend="Filtrar por">
+			<p:outputLabel value="Origem:" />
+			<p:inputText id="nome" value="#{corridaBean.nome}" />
+			<p:commandButton value="Pesquisar"
+				actionListener="#{corridaBean.pesquisarCorrida}"
+				update="dataTable" />
+		</p:fieldset>
+		<p:dataTable id="dataTable" var="result"
+			value="#{corridaBean.listagemCorrida}">
+			<p:column headerText="Origem">
+				<h:outputText value="#{result.origemCorrida}" />
+			</p:column>
+			<p:column headerText="Destino">
+				<h:outputText value="#{result.destinoCorrida}" />
+			</p:column>
+			<p:column headerText="Valor Total">
+				<h:outputText value="#{result.valorTotal}" />
+			</p:column>
+			
+			<p:outputLabel value="Estados:" for="estados" />
+			<p:selectOneMenu id="estados"
+				value="#{concessionariaBean.concessionaria.uf}">
+				<f:selectItems value="#{concessionariaBean.ufValues}" var="uf"
+					itemValue="#{uf}" itemLabel="#{uf.descricao}" />
+			</p:selectOneMenu>
+			
+			<p:column>
+				<p:commandButton id="btEdit" icon="ui-icon-pencil"
+					action="#{corridaBean.editar(result)}">
+				</p:commandButton>
+
+				<p:commandButton id="btDelete" icon="ui-icon-trash"
+					onclick="confirmarRemocao.show();"
+					actionListener="#{corridaBean.guardarSelecao(result)}">
+				</p:commandButton>d
+
+			</p:column>
+		</p:dataTable>
+		<p:dialog header="Confirmar" widgetVar="confirmarRemocao"
+			id="confirmacao" showEffect="explode" hideEffect="clip" height="100"
+			closeOnEscape="true">
+			<h:outputText value="Deseja realmente excluir?" />
+			<p:commandButton value="Sim" icon="ui-icon-check"
+				action="#{corridaBean.remover}"
+				onclick="confirmarRemocao.hide()">
+			</p:commandButton>
+			<p:commandButton value="Não" icon="ui-icon-close"
+				onclick="confirmarRemocao.hide()" />
+		</p:dialog>
+
+		<p:commandButton value="Criar corrida"
+			action="#{corridaBean.novaCorrida}" />
+	</h:form>
+</h:body>
+</html>

@@ -2,7 +2,6 @@ package br.unicesumar.persistence;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -19,13 +18,13 @@ public class Corrida {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@Column(nullable = false)
+	@Column()
 	private String origemCorrida;
 	
-	@Column(nullable = false)
+	@Column()
 	private String destinoCorrida;
 	
-	@Column(nullable = false)
+	@Column()
 	private BigDecimal valorTotal;
 	
 	public BigDecimal getValorTotal() {
@@ -36,11 +35,11 @@ public class Corrida {
 		this.valorTotal = valorTotal;
 	}
 
-	@OneToOne
+	/*@OneToOne
 	private List<Veiculo> veiculo=new ArrayList<Veiculo>();
 
 	@OneToOne
-	private List<Motorista> motorista=new ArrayList<Motorista>();
+	private List<Motorista> motorista=new ArrayList<Motorista>();*/
 	
 	public String getOrigemCorrida() {
 		return origemCorrida;
@@ -57,7 +56,7 @@ public class Corrida {
 	public void setDestinoCorrida(String destinoCorrida) {
 		this.destinoCorrida = destinoCorrida;
 	}
-
+/*
 	public List<Veiculo> getVeiculo() {
 		return veiculo;
 	}
@@ -73,7 +72,7 @@ public class Corrida {
 	public void setMotorista(Motorista motorista) {
 		this.motorista.add(motorista);
 	}
-
+*/
 	public Long getId() {
 		return id;
 	}

@@ -5,18 +5,20 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import br.unicesumar.dao.impl.CorridaDao;
 import br.unicesumar.persistence.Corrida;
-import br.unicesumar.persistence.Veiculo;
+import br.unicesumar.persistence.Motorista;
 
+@SessionScoped
 @ManagedBean
 public class CorridaBean {
-	private Corrida corrida = new Corrida();
+	private Corrida corrida=new Corrida();
 	private CorridaDao dao = new CorridaDao();
 	private String nome = "";
-	private List<Corrida> listagemDeCorrida = new ArrayList<Corrida>();
+	private List<Corrida> listagemCorrida = new ArrayList<Corrida>();
 
 	public String getNome() {
 		return nome;
@@ -30,10 +32,6 @@ public class CorridaBean {
 		return corrida;
 	}
 
-	public void setCorrida(Corrida corrida) {
-		this.corrida = corrida;
-	}
-
 	public CorridaDao getDao() {
 		return dao;
 	}
@@ -43,11 +41,11 @@ public class CorridaBean {
 	}
 
 	public List<Corrida> getListagemCorrida() {
-		return listagemDeCorrida;
+		return listagemCorrida;
 	}
 
-	public void setListagemCorrida(List<Corrida> listagemDeCorrida) {
-		this.listagemDeCorrida = listagemDeCorrida;
+	public void setListagemCorrida(List<Corrida> listagemCorrida) {
+		this.listagemCorrida = listagemCorrida;
 	}
 	
 	public String salvar() {
@@ -77,7 +75,7 @@ public class CorridaBean {
 	}
 	
 	public void pesquisarCorrida() {
-		listagemDeCorrida = dao.pesquisarCorrida(nome);
+		listagemCorrida = dao.pesquisarCorrida(nome);
 	}
 	
 	public String novaCorrida() {
@@ -99,7 +97,7 @@ public class CorridaBean {
 		if (corrida == null) {
 			context.addMessage(null, new FacesMessage(
 					FacesMessage.SEVERITY_WARN,
-					"nenhuma pessoa selecionada", ""));
+					"nenhuma corrida selecionada", ""));
 			return "corridaList";
 		}
 		try {
@@ -107,7 +105,7 @@ public class CorridaBean {
 			pesquisarCorrida();
 
 			context.addMessage(null, new FacesMessage(
-					FacesMessage.SEVERITY_INFO, "Removido com sucesso", ""));
+					FacesMessage.SEVERITY_INFO, "Corrida removida com sucesso", ""));
 		} catch (Exception e) {
 			context.addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_ERROR,
@@ -117,6 +115,11 @@ public class CorridaBean {
 	}
 	
 	public Integer getQuantidadeItensLista() {
-		return listagemDeCorrida.size();
+		return listagemCorrida.size();
+	}
+	
+	public List<Motorista> getMotoristas(){
+		//motoristaDao.findall
+		return null;
 	}
 }

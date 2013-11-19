@@ -13,33 +13,18 @@
 	<h:form>
 		<p:messages id="messages" autoUpdate="true" closable="true" />
 		<h:panelGrid columns="2">
-			<p:outputLabel value="Origem corrida:" for="origemCorrida" />
-			<p:inputText id="origemCorrida"
-				value="#{CorridaBean.corrida.origemCorrida}" required="true" />
+			<p:outputLabel value="Origem corrida:" for="origem" />
+			<p:inputText id="origem" value="#{corridaBean.corrida.origemCorrida}" />
 
-			<p:outputLabel value="Destino corrida:" for="destinoCorrida" />
-			<p:inputText id="destinoCorrida"
-				value="#{CorridaBean.corrida.destinoCorrida}" required="true" />
+			<p:outputLabel value="Destino corrida:" for="destino" />
+			<p:inputText id="destino"
+				value="#{corridaBean.corrida.destinoCorrida}" />
 
-			<p:outputLabel value="Valor total:" for="valorTotal" />
-			<p:inputText id="valorTotal"
-				value="#{CorridaBean.corrida.valorTotal}" required="true" />
+			<p:outputLabel value="Valor total:" for="valor" />
+			<p:inputText id="valor" value="#{corridaBean.corrida.valorTotal}" />
 
-			<p:outputLabel value="Veiculo:" for="veiculo" />
-			<p:selectOneMenu id="veiculo" value="#{CorridaBean.Corrida.veiculo}">
-				<f:selectItems value="#{corridaBean.veiculoValues}" var="veiculo"
-					itemValue="#{veiculo}" itemLabel="#{veiculo.descricao}" />
-			</p:selectOneMenu>
-
-			<p:outputLabel value="Motorista:" for="motorista" />
-			<p:selectOneMenu id="motorista" value="#{CorridaBean.Corrida.motorista}">
-				<f:selectItems value="#{corridaBean.motoristaValues}" var="motorista"
-					itemValue="#{motorista}" itemLabel="#{motorista.descricao}" />
-			</p:selectOneMenu>
-
-			<p:commandButton value="Inserir"
-				rendered="#{corridaBean.corrida.id == null}"
-				action="#{corridaBean.salvar}" />
+			<p:commandButton value="Inserir" ajax="false" type="submit"
+				actionListener="#{corridaBean.salvar}" />
 
 			<p:commandButton value="Alterar"
 				rendered="#{corridaBean.corrida.id != null}"

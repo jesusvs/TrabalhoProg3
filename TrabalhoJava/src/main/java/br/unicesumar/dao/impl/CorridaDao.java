@@ -8,15 +8,16 @@ import org.hibernate.criterion.Restrictions;
 
 import br.unicesumar.dao.GenericHibernateDao;
 import br.unicesumar.persistence.Corrida;
-import br.unicesumar.persistence.Motorista;
+import br.unicesumar.persistence.Veiculo;
 
-public class CorridaDao extends GenericHibernateDao<Corrida, Long>{
+public class CorridaDao extends GenericHibernateDao<Corrida, Long> {
 
 	public List<Corrida> pesquisarCorrida(String nome) {
 		Criteria criteria = getSession().createCriteria(Corrida.class);
 		if (nome != "") {
-		    criteria.add(Restrictions.like("nome", nome, MatchMode.ANYWHERE));
+			criteria.add(Restrictions.like("origemCorrida", nome,
+					MatchMode.ANYWHERE));
 		}
 		return criteria.list();
-	    }
+	}
 }
